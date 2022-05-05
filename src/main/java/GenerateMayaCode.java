@@ -113,7 +113,6 @@ public class GenerateMayaCode {
     }
 
     private static void generateFileFromStr(String entityFileContentStr, String fileName){
-
         File file = new File("./gen/"+fileName +".java");
         try{
             file.createNewFile();
@@ -123,7 +122,6 @@ public class GenerateMayaCode {
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
     private static File getResourceFile(final String fileName) throws Exception {
