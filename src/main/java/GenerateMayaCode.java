@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.FileWriter;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -111,14 +112,16 @@ public class GenerateMayaCode {
         System.out.println("Generate "+entityName +" done.");
     }
 
-    private static void generateFileFromStr(String entityFileContentStr, String fileName) throws Exception{
-        Path path = Paths.get("/gen"+fileName +".java");
-        Files.createDirectories(path.getParent());
+    private static void generateFileFromStr(String entityFileContentStr, String fileName){
 
-        try {
-            Files.createFile(path);
-        } catch (FileAlreadyExistsException e) {
-            System.err.println("already exists: " + e.getMessage());
+        File file = new File("./gen/"+fileName +".java");
+        try{
+            file.createNewFile();
+            FileWriter myWriter = new FileWriter(file);
+            myWriter.write(entityFileContentStr);
+            myWriter.close();
+        }catch(Exception e){
+            e.printStackTrace();
         }
 
     }
