@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -92,7 +93,7 @@ public class GenerateMayaCode {
 
         // toString
 
-        entityFileContentStr = entityFileContentStr.concat("\n@Override public String toString() { \n\treturn \""+entityName
+        entityFileContentStr = entityFileContentStr.concat("\n@Override\npublic String toString() { \n\treturn \""+entityName
                 +"{\"+" );
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node nNode = nList.item(temp);
@@ -112,15 +113,24 @@ public class GenerateMayaCode {
         System.out.println("Generate "+entityName +" done.");
     }
 
-    private static void generateFileFromStr(String entityFileContentStr, String fileName){
+    private static void generateFileFromStr(String entityFileContentStr, String fileName) {
         File file = new File("./gen/"+fileName +".java");
+        FileWriter myWriter = null;
         try{
             file.createNewFile();
-            FileWriter myWriter = new FileWriter(file);
+            myWriter = new FileWriter(file);
             myWriter.write(entityFileContentStr);
-            myWriter.close();
+
         }catch(Exception e){
             e.printStackTrace();
+        }finally {
+            if(myWriter != null){
+                try {
+                    myWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
