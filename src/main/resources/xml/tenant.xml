@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>Tenant</entityName>
+    <fields>
+        <field>
+            <fieldName>movingIn</fieldName>
+            <fieldType>Date</fieldType>
+            <comment>Beköltözés dátuma</comment>
+        </field>
+        <field>
+            <fieldName>movingOut</fieldName>
+            <fieldType>Date</fieldType>
+            <comment>Kiköltözés dátuma</comment>
+        </field>
+        <field>
+            <fieldName>name</fieldName>
+            <fieldType>String</fieldType>
+            <comment>bérlő neve</comment>
+        </field>
+        <field>
+            <fieldName>tenantCounts</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>bérlők száma</comment>
+        </field>
+        <field>
+            <fieldName>availability</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Elérhetőség</comment>
+        </field>
+        <field>
+            <fieldName>subDeposit</fieldName>
+            <fieldType>parent</fieldType>
+            <fieldTypeName>SubDeposit</fieldTypeName>
+            <idName>sub_deposit_id</idName>
+            <comment>albetét</comment>
+        </field>
+    </fields>
+</entity>
