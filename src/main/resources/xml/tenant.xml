@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <entity>
     <entityName>Tenant</entityName>
+    <comment>Albérlők</comment>
     <fields>
         <field>
             <fieldName>movingIn</fieldName>
@@ -29,8 +30,7 @@
         </field>
         <field>
             <fieldName>subDeposit</fieldName>
-            <fieldType>parent</fieldType>
-            <fieldTypeName>SubDeposit</fieldTypeName>
+            <fieldType>SubDeposit</fieldType>
             <idName>sub_deposit_id</idName>
             <comment>albetét</comment>
         </field>
